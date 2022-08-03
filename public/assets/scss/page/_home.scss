@@ -1,0 +1,11 @@
+.Home {
+	background: $background-body;
+	height: 100vh;
+
+	&Title {
+		text-align: center;
+		padding: 40px 0;
+		color: $white;
+		letter-spacing: 0.1em;
+	}
+}

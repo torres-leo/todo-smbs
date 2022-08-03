@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+.Home {
+  background: linear-gradient(315deg, #6d04b9 26%, #165cf3 97%);
+  height: 100vh; }
+  .HomeTitle {
+    text-align: center;
+    padding: 40px 0;
+    color: #ffffff;
+    letter-spacing: 0.1em; }
+
+/*# sourceMappingURL=main.css.map */

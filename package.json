@@ -1,0 +1,17 @@
+{
+	"name": "todoapp",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.html",
+	"scripts": {
+		"start": "http-server -c-1 -p 8080",
+		"scss": "node-sass --source-map ./public/assets/css --watch ./public/assets/scss -o ./public/assets/css"
+	},
+	"keywords": [],
+	"author": "Leo Torres",
+	"license": "ISC",
+	"dependencies": {
+		"http-server": "^14.1.1",
+		"node-sass": "^7.0.1"
+	}
+}
