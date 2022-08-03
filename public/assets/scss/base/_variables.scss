@@ -1,4 +1,15 @@
+// COLORS
+$white: #ffffff;
+$red: #f07f67;
+$green: #9ef17f;
+$gray: (
+	dark: #838386,
+	regular: #c2c2c3,
+	light: #e1e1e1,
+);
+$black: #000000;
 $purple: #6d04b9;
 $blue: #165cf3;
-$background-body: linear-gradient(315deg, $purple 26%, $blue 97%);
-$white: #ffffff;
+$background-body: linear-gradient(315deg, $purple 36%, $blue 97%);
+$font-primary: 'Oswald', sans-serif;
+$font-secondary: 'Lato', sans-serif;

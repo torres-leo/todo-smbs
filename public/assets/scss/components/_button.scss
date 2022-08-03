@@ -1,0 +1,31 @@
+.button {
+	height: 50px;
+	width: 150px;
+	padding: 0 20px;
+	// background-color: map-get($gray, light);
+	border: none;
+	font-size: 20px;
+	font-weight: 700;
+	border-radius: 5px;
+	// font-size: 20px;
+
+	&:hover {
+		background: map-get($gray, regular);
+		cursor: pointer;
+	}
+
+	&.icon {
+		width: 80px;
+		font-size: 20px;
+	}
+	&.edite {
+		&:hover {
+			background-color: $green;
+		}
+	}
+	&.delete {
+		&:hover {
+			background-color: $red;
+		}
+	}
+}
