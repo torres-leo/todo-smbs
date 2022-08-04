@@ -4,18 +4,16 @@
 		init: function () {
 			this.cacheDom();
 			this.bindingEvents();
+			this.showTask();
 		},
 		cacheDom: function () {
 			this.listTask = document.getElementById('containerTasks');
 			this.button = document.getElementById('buttonAdd');
 			this.input = document.getElementById('task');
-			this.buttonDel = document.getElementById('deleteButton');
-			this.buttonEdit = document.getElementById('editButton');
 		},
 		bindingEvents: function () {
 			this.button.addEventListener('click', this.addTask.bind(this));
-			this.buttonEdit?.addEventListener('click', this.editTask.bind(this));
-			this.buttonDel?.addEventListener('click', this.deleteTask.bind(this));
+			this.listTask.addEventListener('click', this.deleteTask.bind(this));
 		},
 		taskElement: function (taskValue) {
 			const listItem = document.createElement('li');
@@ -40,20 +38,35 @@
 
 			label.innerText = taskValue;
 
-			this.listTask.appendChild(listItem);
 			editButton.appendChild(editIcon);
 			deleteButton.appendChild(deleteIcon);
 			containerIcons.appendChild(editButton);
 			containerIcons.appendChild(deleteButton);
 
-			listItem.dataset.id;
+			this.list.push(label.textContent);
+
+			this.list.forEach((element, index) => {});
+
 			listItem.appendChild(label);
 			listItem.appendChild(containerIcons);
+			this.listTask.appendChild(listItem);
 
-			const id = Date.now().toString();
+			console.log(listItem);
+			this.setTaskStorage(this.list);
 
-			this.list.push({ id, taskValue });
-			console.log(this.list);
+			// this.getTaskStorage('todoItems');
+		},
+		setTaskStorage: function (list) {
+			localStorage.setItem('todoItems', JSON.stringify(list));
+		},
+		getTaskStorage: function () {
+			let listItem = localStorage.getItem('todoItems');
+			if (listItem === 'undefined' || listItem === null) {
+				this.list = [];
+			} else {
+				this.list = JSON.parse(listItem);
+			}
+			// console.log(listItem);
 		},
 		addTask: function (e) {
 			e.preventDefault();
@@ -64,22 +77,39 @@
 				this.taskElement(this.input.value);
 			}
 			this.input.value = '';
-
-			const deleteButton = document.getElementById('deleteButton');
-			deleteButton.onclick = (e) => {
-				// console.log(e.target.parentElement.parentElement);
-				let li = e.target.parentElement.parentElement;
-				let ul = li.parentElement;
-
-				ul.removeChild(li);
-			};
-			// const editButton = document.getElementById('editButton');
-			// editButton.onclick = (e) => {
-			// 	console.log(e.target.parentElement.parentElement);
-			// };
 		},
 
-		editTask: function () {},
+		editTask: function () {
+			console.log('Hola');
+		},
+		deleteTask: function (e) {
+			const elementLi = e.target.parentElement.parentElement;
+			const idElement = Number(elementLi.id);
+
+			console.log(idElement);
+
+			this.list.splice(idElement, 1);
+			this.setTaskStorage(this.list);
+			this.showTask();
+		},
+		showTask: function () {
+			this.getTaskStorage();
+			let li = '';
+			this.list.forEach((element, index) => {
+				li += `<li id=${index} class="containerTasks-item"><label>${element}</label>
+				<div class="containerIcon">
+				<button id="editButton" class="button icon edite" type="button">
+				<i class="fa-solid fa-pen-to-square"></i>
+				</button>
+				<button id="deleteButton" class="button icon delete" type="button">
+				<i class="fa-solid fa-trash-can"></i>
+				</button>
+				</div>
+				</li>`;
+
+				this.listTask.innerHTML = li;
+			});
+		},
 	};
 	module.init();
 })();

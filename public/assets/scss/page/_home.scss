@@ -1,6 +1,7 @@
 .Home {
 	background: $background-body;
 	height: 100vh;
+	overflow: auto;
 
 	&-container {
 		display: block;

@@ -32,6 +32,10 @@
 			border-bottom: 1px solid map-get($gray, regular);
 			color: $white;
 
+			&:last-child {
+				border-bottom: none;
+			}
+
 			.containerIcon {
 				display: flex;
 				align-items: center;
