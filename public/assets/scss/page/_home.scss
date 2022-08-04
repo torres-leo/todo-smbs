@@ -51,8 +51,15 @@
 		font-family: $font-secondary;
 		font-size: 18px;
 		background: $white;
+		border: none;
 		border-radius: 10px;
-		resize: none;
-		// overflow: scroll;
+		text-align: center;
+
+		&::placeholder {
+			text-align: center;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			color: map-get($gray, regular);
+		}
 	}
 }

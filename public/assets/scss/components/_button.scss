@@ -2,15 +2,20 @@
 	height: 50px;
 	width: 150px;
 	padding: 0 20px;
-	// background-color: map-get($gray, light);
-	border: none;
+	background-color: transparent;
+	border: 2px solid map-get($gray, regular);
 	font-size: 20px;
 	font-weight: 700;
 	border-radius: 5px;
 	// font-size: 20px;
+	transition: all ease-in-out 0.3s;
+	color: map-get($gray, light);
 
 	&:hover {
-		background: map-get($gray, regular);
+		border: 2px solid $black;
+		background-color: map-get($gray, light);
+		color: $black;
+		opacity: 0.8;
 		cursor: pointer;
 	}
 
