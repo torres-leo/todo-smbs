@@ -92,8 +92,18 @@
 			this.input.value = '';
 		},
 
-		editTask: function () {
-			console.log('Hola');
+		editTask: function (e) {
+			let elementId = Number(e.target.id);
+			if (e.target.classList.contains('edite') || e.target.classList.contains('fa-pen-to-square')) {
+				let inputValue;
+				let editItem = this.list.forEach((element, index) => {
+					if (index === elementId) {
+						inputValue = element;
+					}
+					return inputValue;
+				});
+				this.input.value = inputValue;
+			}
 		},
 		deleteTask: function (e) {
 			let elementId = Number(e.target.id);
