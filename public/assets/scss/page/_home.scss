@@ -5,64 +5,64 @@
 
 	&-container {
 		display: block;
-		width: 600px;
 		margin: 0 auto;
 		padding-left: 15px;
 		padding-right: 15px;
+		width: 600px;
 	}
 
 	&-title {
+		color: $white;
 		display: block;
-		text-align: center;
+		font-family: $font-primary;
+		font-size: 44px;
+		letter-spacing: 0.1em;
 		margin: 0 auto;
 		padding: 40px 0;
-		color: $white;
-		letter-spacing: 0.1em;
-		font-family: $font-primary;
 		text-transform: uppercase;
-		font-size: 44px;
+		text-align: center;
 
 		&::after {
+			background: $black;
 			content: '';
+			display: block;
+			height: 2px;
 			margin: 0 auto;
 			margin-top: 20px;
 			width: 160px;
-			height: 2px;
-			display: block;
-			background: $black;
 		}
 	}
 
 	&-form {
 		display: flex;
-		justify-content: center;
 		align-items: center;
-		gap: 20px;
-		width: 100%;
 		flex: 1;
+		gap: 20px;
+		justify-content: center;
 		margin-bottom: 60px;
+		width: 100%;
 	}
 
 	&-input {
-		width: 100%;
-		height: 60px;
-		padding: 15px;
-		font-family: $font-secondary;
-		font-size: 18px;
 		background: $white;
 		border: none;
 		border-radius: 10px;
+		font-family: $font-secondary;
+		font-size: 18px;
+		height: 60px;
+		padding: 15px;
 		text-align: center;
+		width: 100%;
 
 		&:focus {
 			border: $purple;
 		}
 
 		&::placeholder {
+			color: map-get($gray, regular);
+			letter-spacing: 2px;
 			text-align: center;
 			text-transform: uppercase;
-			letter-spacing: 2px;
-			color: map-get($gray, regular);
 		}
 	}
 }

@@ -1,38 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Todo App | smbs</title>
+		<link rel="stylesheet" href="./assets/css/main.css" />
+	</head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Todo App | smbs</title>
-	<link rel="stylesheet" href="./assets/css/main.css" />
-</head>
+	<body>
+		<main>
+			<div class="Home">
+				<div class="Home-container">
+					<h1 class="Home-title">To-do App📑</h1>
 
-<body>
-	<main>
-		<div class="Home">
-			<div class="Home-container">
-				<h1 class="Home-title">To-do App📑</h1>
+					<section>
+						<form id="form" class="Home-form">
+							<input type="text" id="task" class="Home-input" placeholder="insert task" />
+							<button id="buttonAdd" class="button">Add Task</button>
+						</form>
+						<div class="Task">
+							<h3 class="Task-title">List Tasks</h3>
 
-				<section>
-					<form id="form" class="Home-form">
-						<input type="text" id="task" class="Home-input" placeholder="insert task">
-						<button id="buttonAdd" class="button">Add Task</button>
-					</form>
-					<div class="TaskList">
-						<h3 class="TaskList-Title">List Tasks</h3>
-
-						<ul id="containerTasks">
-						</ul>
-				</section>
-
+							<ul id="containerTasks"></ul>
+						</div>
+					</section>
+				</div>
 			</div>
-		</div>
-		</div>
-	</main>
-	<script src="https://kit.fontawesome.com/2e6341f303.js" crossorigin="anonymous"></script>
-	<script src="./assets/js/app.js"></script>
-</body>
-
+		</main>
+		<script src="https://kit.fontawesome.com/2e6341f303.js" crossorigin="anonymous"></script>
+		<script src="./assets/js/app.js"></script>
+	</body>
 </html>

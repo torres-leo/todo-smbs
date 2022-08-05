@@ -20,7 +20,7 @@
 
 		taskElement: function (taskValue, index) {
 			const listItem = document.createElement('li');
-			listItem.classList.add('containerTasks-item');
+			listItem.classList.add('Task-item');
 
 			const label = document.createElement('label');
 
@@ -32,7 +32,7 @@
 			const deleteIcon = document.createElement('i');
 
 			label.classList.add('text');
-			containerIcons.classList.add('containerIcon');
+			containerIcons.classList.add('TaskButton-wrapper');
 			checkInput.classList.add('checkItem');
 			checkInput.setAttribute('type', 'checkbox');
 			editButton.setAttribute('type', 'button');
