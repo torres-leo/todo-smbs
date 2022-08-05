@@ -35,10 +35,8 @@
 			containerIcons.classList.add('containerIcon');
 			checkInput.classList.add('checkItem');
 			checkInput.setAttribute('type', 'checkbox');
-			// editButton.setAttribute('id', 'editButton');
 			editButton.setAttribute('type', 'button');
 			editButton.classList.add('button', 'icon', 'edite');
-			// deleteButton.setAttribute('id', 'deleteButton');
 			deleteButton.classList.add('button', 'icon', 'delete');
 			editIcon.classList.add('fa-solid', 'fa-pen-to-square');
 			deleteIcon.classList.add('fa-solid', 'fa-trash-can');
@@ -88,7 +86,6 @@
 				this.elementId = null;
 			} else {
 				this.taskElement(this.input.value, this.list.length);
-				// let task = this.input.value;
 				this.list.push(this.input.value);
 			}
 			this.setTaskStorage();
