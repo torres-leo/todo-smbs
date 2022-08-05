@@ -33,7 +33,7 @@
 
 			label.classList.add('text');
 			containerIcons.classList.add('TaskButton-wrapper');
-			checkInput.classList.add('checkItem');
+			checkInput.classList.add('Task-check');
 			checkInput.setAttribute('type', 'checkbox');
 			editButton.setAttribute('type', 'button');
 			editButton.classList.add('button', 'icon', 'edite');
