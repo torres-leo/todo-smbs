@@ -96,7 +96,7 @@
 			let elementId = Number(e.target.id);
 			if (e.target.classList.contains('edite') || e.target.classList.contains('fa-pen-to-square')) {
 				let inputValue;
-				let editItem = this.list.forEach((element, index) => {
+				this.list.forEach((element, index) => {
 					if (index === elementId) {
 						inputValue = element;
 					}
