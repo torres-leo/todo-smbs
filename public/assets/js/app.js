@@ -84,6 +84,8 @@
 			if (this.isEditing) {
 				this.button.innerText = 'Add Task';
 				this.list[this.elementId] = this.input.value;
+				this.isEditing = false;
+				this.elementId = null;
 			} else {
 				this.taskElement(this.input.value, this.list.length);
 				// let task = this.input.value;

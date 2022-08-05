@@ -81,7 +81,7 @@
     margin: 0 auto;
     padding-left: 15px;
     padding-right: 15px; }
-  .HomeTitle {
+  .Home-title {
     display: block;
     text-align: center;
     margin: 0 auto;
@@ -91,7 +91,7 @@
     font-family: "Oswald", sans-serif;
     text-transform: uppercase;
     font-size: 44px; }
-    .HomeTitle::after {
+    .Home-title::after {
       content: '';
       margin: 0 auto;
       margin-top: 20px;
@@ -99,7 +99,7 @@
       height: 2px;
       display: block;
       background: #000000; }
-  .HomeAddTask {
+  .Home-form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,7 +107,7 @@
     width: 100%;
     flex: 1;
     margin-bottom: 60px; }
-  .Home.inputTask {
+  .Home-input {
     width: 100%;
     height: 60px;
     padding: 15px;
@@ -117,9 +117,9 @@
     border: none;
     border-radius: 10px;
     text-align: center; }
-    .Home.inputTask:focus {
+    .Home-input:focus {
       border: #6d04b9; }
-    .Home.inputTask::placeholder {
+    .Home-input::placeholder {
       text-align: center;
       text-transform: uppercase;
       letter-spacing: 2px;
