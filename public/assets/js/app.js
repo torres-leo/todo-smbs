@@ -1,6 +1,7 @@
 (function () {
 	const module = {
 		list: [],
+		isEditing: false,
 		init: function () {
 			this.cacheDom();
 			this.bindingEvents();
@@ -15,11 +16,9 @@
 
 		bindingEvents: function () {
 			this.button.addEventListener('click', this.addTask.bind(this));
-			this.listTask.addEventListener('click', this.deleteTask.bind(this));
-			this.listTask.addEventListener('click', this.editTask.bind(this));
 		},
 
-		taskElement: function (taskValue) {
+		taskElement: function (taskValue, index) {
 			const listItem = document.createElement('li');
 			listItem.classList.add('containerTasks-item');
 
@@ -44,6 +43,9 @@
 			editIcon.classList.add('fa-solid', 'fa-pen-to-square');
 			deleteIcon.classList.add('fa-solid', 'fa-trash-can');
 
+			editButton.addEventListener('click', this.editTask.bind(this));
+			deleteButton.addEventListener('click', this.deleteTask.bind(this));
+
 			label.innerText = taskValue;
 
 			editButton.appendChild(editIcon);
@@ -55,89 +57,68 @@
 			listItem.appendChild(label);
 			listItem.appendChild(containerIcons);
 
-			this.list.push(label.textContent);
+			editButton.setAttribute('id', index);
+			editIcon.setAttribute('id', index);
+			deleteButton.setAttribute('id', index);
+			deleteIcon.setAttribute('id', index);
+			listItem.setAttribute('id', index);
 
-			this.list.forEach((element, index) => {
-				editButton.setAttribute('id', index);
-				editIcon.setAttribute('id', index);
-				deleteButton.setAttribute('id', index);
-				deleteIcon.setAttribute('id', index);
-				listItem.setAttribute('id', index);
-			});
 			this.listTask.appendChild(listItem);
-			this.setTaskStorage(this.list);
-
-			// console.log(this.list);
 		},
-		setTaskStorage: function (list) {
-			localStorage.setItem('todoItems', JSON.stringify(list));
+		setTaskStorage: function () {
+			localStorage.setItem('todoItems', JSON.stringify(this.list));
 		},
 		getTaskStorage: function () {
-			let listItem = localStorage.getItem('todoItems');
-			if (listItem === 'undefined' || listItem === null) {
-				this.list = [];
-			} else {
-				this.list = JSON.parse(listItem);
+			let listItem = JSON.parse(localStorage.getItem('todoItems'));
+			if (!listItem) {
+				return [];
 			}
-			// console.log(listItem);
+			return listItem;
 		},
 		addTask: function (e) {
 			e.preventDefault();
-
-			if (this.input.value === '') {
+			if (!this.input.value) {
 				alert("can't send an empty task");
-			} else {
-				this.taskElement(this.input.value);
+				return;
 			}
+			if (this.isEditing) {
+				this.button.innerText = 'Add Task';
+				this.list[this.elementId] = this.input.value;
+			} else {
+				this.taskElement(this.input.value, this.list.length);
+				// let task = this.input.value;
+				this.list.push(this.input.value);
+			}
+			this.setTaskStorage();
 			this.input.value = '';
+			this.showTasks();
 		},
 
 		editTask: function (e) {
-			let elementId = Number(e.target.id);
-			if (e.target.classList.contains('edite') || e.target.classList.contains('fa-pen-to-square')) {
-				let inputValue;
-				this.list.forEach((element, index) => {
-					if (index === elementId) {
-						inputValue = element;
-					}
-					return inputValue;
-				});
-				this.input.value = inputValue;
-			}
+			const elementId = Number(e.target.id);
+			this.input.value = this.list[elementId];
+
+			this.isEditing = true;
+			this.elementId = elementId;
+
+			this.button.innerText = 'Save';
+			this.setTaskStorage();
+			this.showTasks();
 		},
 		deleteTask: function (e) {
-			let elementId = Number(e.target.id);
-			if (e.target.classList.contains('delete') || e.target.classList.contains('fa-trash-can')) {
-				// this.list.splice(elementId, 1);
-				let deleteItem = this.list.filter((element, index) => index !== elementId);
-				this.list = deleteItem;
-				this.setTaskStorage(this.list);
-				this.cleanHTML();
-				this.showTasks();
-			}
+			const elementId = Number(e.target.id);
+
+			let deleteItem = this.list.filter((element, index) => index !== elementId);
+			this.list = deleteItem;
+			this.setTaskStorage();
+			this.showTasks();
 		},
 		showTasks: function () {
-			this.getTaskStorage();
-			let li = '';
+			this.listTask.innerHTML = '';
+			this.list = this.getTaskStorage();
 			this.list.forEach((element, index) => {
-				li += `<li id=${index} class="containerTasks-item"><input type="checkbox" class="checkItem"><label class="text">${element}</label>
-				<div class="containerIcon">
-				<button id=${index} class="button icon edite" type="button">
-				<i class="fa-solid fa-pen-to-square" id=${index}></i>
-				</button>
-				<button id=${index} class="button icon delete" type="button">
-				<i class="fa-solid fa-trash-can" id=${index}></i>
-				</button>
-				</div>
-				</li>`;
-
-				this.listTask.innerHTML = li;
+				this.taskElement(element, index);
 			});
-		},
-		cleanHTML: function () {
-			while (this.listTask.firstChild) {
-				this.listTask.removeChild(this.listTask.firstChild);
-			}
 		},
 	};
 	module.init();
